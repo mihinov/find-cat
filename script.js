@@ -90,9 +90,11 @@ function listenerStartClick(event) {
 	hint.style.backgroundColor = 'white';
 	cat.style.transition = '0s transform linear';
 	cat.style.transform = 'scale(0)';
-	event.target.style.backgroundColor = 'orange';
-	event.target.addEventListener('transitionend', (e) => {
-		if (e.target.style.cssText == 'background-color: orange;') {
+	start.style.backgroundColor = 'orange';
+	console.log(event);
+	start.addEventListener('transitionend', (e) => {
+		if (start.style.cssText == 'background-color: orange;' &&
+			e.target.classList.contains('start')) {
 			setTimeout(() => {
 				e.target.style.backgroundColor = 'white';
 			}, 125);
