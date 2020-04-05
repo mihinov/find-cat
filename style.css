@@ -72,17 +72,25 @@ img {
 	min-height: 100vh;
 	min-width: 100vw;
 	position: absolute;
-	top: 0;
-	left: 0;
-	color: white;
-	font-size: 10vw;
 	display: -webkit-flex;
 	display: -moz-flex;
 	display: -ms-flex;
 	display: -o-flex;
 	display: flex;
+	opacity: 0;
+	top: 0;
+	left: 0;
+	color: white;
+	font-size: 10vw;
 	justify-content: center;
 	align-items: center;
+	transition: opacity .2s linear;
+	z-index: -1;
+}
+
+.overlay.active {
+	opacity: 1;
+	z-index: 1;
 }
 
 .overlay span {
@@ -100,7 +108,7 @@ img {
 	height: 5px;
 	background-color: white;
 	transition: transform .3s linear;
-	transform-origin: left top;
+	/*transform-origin: left top;*/
 }
 
 .overlay span:hover::before {

@@ -4,14 +4,19 @@ const start = document.querySelector('.start');
 const result = document.querySelector('.result');
 const hint = document.querySelector('.hint');
 const resultSpan = result.querySelector('span');
+const overlay = document.querySelector('.overlay');
+const overlaySpan = overlay.querySelector('span');
 const pogresh = 100;
 let heightWindow, widthWindow,
 randomWidth, randomHeight,
 leftCat, topCat, count, audio, findCatFlag;
 
 audio = new Audio();
-
 start.addEventListener('click', listenerStartClick);
+overlaySpan.addEventListener('click', (e) => {
+	overlay.classList.remove('active');
+	listenerStartClick();
+});
 
 function calcHeightAndWidthWindow() {
 	heightWindow = document.body.clientHeight;
@@ -58,10 +63,9 @@ function listenerWindowClick(event) {
 	const clientX = event.clientX;
 	const clientY = event.clientY;
 
-	if (findCatFlag == true) {
-		findCatFlag = false;
-		listenerStartClick(event);
-	}
+	// if (findCatFlag == true) {
+	// 	findCatFlag = false;
+	// }
 
 	if (boolCat(0, clientX, clientY)) {
 		// console.log('вы попали');
@@ -69,6 +73,8 @@ function listenerWindowClick(event) {
 		cat.style.transform = 'scale(1)';
 		playAudio('audio/win.mp3');
 		findCatFlag = true;
+		overlay.classList.add('active');
+		window.removeEventListener('click', listenerWindowClick);
 	} else {
 		playAudio('audio/find1.mp3');
 		hint.innerHTML = 'Холодрыга';
