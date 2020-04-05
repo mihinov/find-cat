@@ -128,7 +128,7 @@ img {
 	}
 }
 
-@media (max-height: 350px) {
+@media (max-height: 500px) {
 	.start, .result, .hint {
 		font-size: 16px;
 	}
