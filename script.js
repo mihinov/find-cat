@@ -67,8 +67,7 @@ function listenerWindowClick(event) {
 		return false;
 	}
 
-	count++;
-	resultSpan.innerHTML = count + ' раз';
+	resultSpan.innerHTML = ++count + ' раз';
 	const clientX = event.clientX;
 	const clientY = event.clientY;
 
