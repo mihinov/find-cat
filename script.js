@@ -62,7 +62,7 @@ function listenerWindowClick(event) {
 		cat.style.transform = 'scale(1)';
 		playAudio('audio/win.mp3');
 	} else {
-		playAudio('audio/looz.mp3');
+		playAudio('audio/find1.mp3');
 		cat.style.transform = 'scale(0)';
 		hint.innerHTML = 'Холодрыга';
 	}
