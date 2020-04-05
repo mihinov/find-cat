@@ -1,10 +1,11 @@
-const bg = document.querySelector('.bg');
-const cat = document.querySelector('.cat');
-const start = document.querySelector('.start');
-const result = document.querySelector('.result');
-const hint = document.querySelector('.hint');
+const body = document.querySelector('body');
+const bg = body.querySelector('.bg');
+const cat = body.querySelector('.cat');
+const start = body.querySelector('.start');
+const hint = body.querySelector('.hint');
+const result = body.querySelector('.result');
 const resultSpan = result.querySelector('span');
-const overlay = document.querySelector('.overlay');
+const overlay = body.querySelector('.overlay');
 const overlaySpan = overlay.querySelector('span');
 const pogresh = 50;
 let heightWindow, widthWindow,
@@ -15,9 +16,10 @@ cat.style.maxWidth = Math.floor(pogresh * 2) + 'px';
 
 audio = new Audio();
 start.addEventListener('click', listenerStartClick);
+
 overlaySpan.addEventListener('click', (e) => {
 	overlay.classList.remove('active');
-	listenerStartClick();
+	listenerStartClick(e);
 });
 
 function calcHeightAndWidthWindow() {
@@ -60,14 +62,15 @@ function listenerWindowClick(event) {
 		event.toElement == hint) {
 		return false;
 	}
-
-	resultSpan.innerHTML = ++count + ' раз';
-	const clientX = event.clientX;
-	const clientY = event.clientY;
 	if (findCatFlag == true) {
 		findCatFlag = false;
 		return false;
 	}
+
+	count++;
+	resultSpan.innerHTML = count + ' раз';
+	const clientX = event.clientX;
+	const clientY = event.clientY;
 
 	if (boolCat(0, clientX, clientY)) {
 		// console.log('вы попали');
@@ -99,7 +102,6 @@ function listenerStartClick(event) {
 	cat.style.transition = '0s transform linear';
 	cat.style.transform = 'scale(0)';
 	start.style.backgroundColor = 'orange';
-	console.log(event);
 	start.addEventListener('transitionend', (e) => {
 		if (start.style.cssText == 'background-color: orange;' &&
 			e.target.classList.contains('start')) {
