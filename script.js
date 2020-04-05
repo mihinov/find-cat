@@ -6,10 +6,12 @@ const hint = document.querySelector('.hint');
 const resultSpan = result.querySelector('span');
 const overlay = document.querySelector('.overlay');
 const overlaySpan = overlay.querySelector('span');
-const pogresh = 100;
+const pogresh = 50;
 let heightWindow, widthWindow,
 randomWidth, randomHeight,
 leftCat, topCat, count, audio, findCatFlag;
+
+cat.style.maxWidth = Math.floor(pogresh * 2) + 'px';
 
 audio = new Audio();
 start.addEventListener('click', listenerStartClick);
