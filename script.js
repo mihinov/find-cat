@@ -17,7 +17,7 @@ cat.style.maxWidth = Math.floor(pogresh * 2) + 'px';
 audio = new Audio();
 start.addEventListener('click', listenerStartClick);
 
-overlaySpan.addEventListener('click', (e) => {
+overlaySpan.addEventListener('click', function(e) {
 	overlay.classList.remove('active');
 	listenerStartClick(e);
 });
