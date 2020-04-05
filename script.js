@@ -20,6 +20,9 @@ start.addEventListener('click', listenerStartClick);
 overlaySpan.addEventListener('click', function(e) {
 	overlay.classList.remove('active');
 	listenerStartClick(e);
+	const randWidthPic = Math.floor(getRandomInt(0, widthWindow)/100) + 10;
+	const randHeightPic = Math.floor(getRandomInt(0, heightWindow)/100) + 8;
+	bg.style.backgroundImage = `url(https://picsum.photos/${randWidthPic}00/${randHeightPic}00)`;
 });
 
 start.addEventListener('transitionend', function(e) {
@@ -123,9 +126,6 @@ function listenerStartClick(event) {
 	count = 0;
 	resultSpan.innerHTML = count + ' раз';
 	hint.innerHTML = 'Подсказка';
-	const randWidthPic = Math.floor(getRandomInt(0, widthWindow)/100) + 10;
-	const randHeightPic = Math.floor(getRandomInt(0, heightWindow)/100) + 8;
-	bg.style.backgroundImage = `url(https://picsum.photos/${randWidthPic}00/${randHeightPic}00)`;
 	window.addEventListener('click', listenerWindowClick);
 }
 
