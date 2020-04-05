@@ -7,7 +7,7 @@ const result = body.querySelector('.result');
 const resultSpan = result.querySelector('span');
 const overlay = body.querySelector('.overlay');
 const overlaySpan = overlay.querySelector('span');
-const pogresh = 40;
+const pogresh = 50;
 let heightWindow, widthWindow,
 randomWidth, randomHeight,
 leftCat, topCat, count, audio, findCatFlag;
@@ -20,6 +20,21 @@ start.addEventListener('click', listenerStartClick);
 overlaySpan.addEventListener('click', function(e) {
 	overlay.classList.remove('active');
 	listenerStartClick(e);
+});
+
+start.addEventListener('transitionend', function(e) {
+	if (start.style.cssText == 'background-color: orange;' &&
+		e.target.classList.contains('start')) {
+		setTimeout(() => {
+			e.target.style.backgroundColor = 'white';
+		}, 125);
+	}
+});
+
+window.addEventListener('resize', function() {
+	calcHeightAndWidthWindow();
+	calcRandomHeightAndWidth();
+	appearanceCat();
 });
 
 function calcHeightAndWidthWindow() {
@@ -101,14 +116,6 @@ function listenerStartClick(event) {
 	cat.style.transition = '0s transform linear';
 	cat.style.transform = 'scale(0)';
 	start.style.backgroundColor = 'orange';
-	start.addEventListener('transitionend', (e) => {
-		if (start.style.cssText == 'background-color: orange;' &&
-			e.target.classList.contains('start')) {
-			setTimeout(() => {
-				e.target.style.backgroundColor = 'white';
-			}, 125);
-		}
-	});
 	boopMe();
 	calcHeightAndWidthWindow();
 	calcRandomHeightAndWidth();
@@ -116,15 +123,9 @@ function listenerStartClick(event) {
 	count = 0;
 	resultSpan.innerHTML = count + ' раз';
 	hint.innerHTML = 'Подсказка';
-	// console.log(randomHeight + ' randomHeight');
-	// console.log(randomWidth + ' randomWidth');
-
-	window.addEventListener('resize', function() {
-		calcHeightAndWidthWindow();
-		calcRandomHeightAndWidth();
-		appearanceCat();
-	});
-
+	const randWidthPic = Math.floor(getRandomInt(0, widthWindow)/100) + 6;
+	const randHeightPic = Math.floor(getRandomInt(0, heightWindow)/100) + 6;
+	bg.style.backgroundImage = `url(https://picsum.photos/${randWidthPic}00/${randHeightPic}00)`;
 	window.addEventListener('click', listenerWindowClick);
 }
 
