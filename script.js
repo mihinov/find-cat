@@ -40,6 +40,13 @@ function boolCat(num, clientX, clientY) {
 		(randomHeight < clientY + pogresh + num && randomHeight > clientY - pogresh - num);
 }
 
+function playAudio(src) {
+	audio.pause();
+	audio.src = src;
+	audio.currentTime = 0;
+	audio.play();
+}
+
 function listenerWindowClick(event) {
 	if (event.toElement == start ||
 		event.toElement == result ||
@@ -53,15 +60,9 @@ function listenerWindowClick(event) {
 	if (boolCat(0, clientX, clientY)) {
 		// console.log('вы попали');
 		cat.style.transform = 'scale(1)';
-		audio.pause();
-		audio.src = 'audio/win.mp3';
-		audio.currentTime = 0;
-		audio.play();
+		playAudio('audio/win.mp3');
 	} else {
-		audio.pause();
-		audio.src = 'audio/looz1.mp3';
-		audio.currentTime = 0;
-		audio.play();
+		playAudio('audio/looz.mp3');
 		cat.style.transform = 'scale(0)';
 		hint.innerHTML = 'Холодрыга';
 	}
