@@ -113,3 +113,9 @@ img {
 .overlay span:hover::before {
 	transform: scaleX(0);
 }
+
+@media (max-width: 500px) {
+	.start, .result, .hint {
+		font-size: 20px;
+	}
+}
