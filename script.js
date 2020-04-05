@@ -65,13 +65,18 @@ function listenerWindowClick(event) {
 		playAudio('audio/find1.mp3');
 		cat.style.transform = 'scale(0)';
 		hint.innerHTML = 'Холодрыга';
+		hint.style.backgroundColor = '#0abdff';
 	}
 	if (boolCat(50, clientX, clientY)) {
 		hint.innerHTML = 'Горячо';
+		hint.style.backgroundColor = 'orange'
 	} else if (boolCat(200, clientX, clientY)) {
 		hint.innerHTML = 'Тепло';
+		hint.style.backgroundColor = 'yellow'
 	} else if (boolCat(400, clientX, clientY)) {
 		hint.innerHTML = 'Холодно';
+		hint.style.backgroundColor = '#83d0ea';
+		backgroundColor = 'transparent'
 	}
 }
 
