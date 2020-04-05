@@ -120,7 +120,17 @@ img {
 
 @media (max-width: 500px) {
 	.start, .result, .hint {
-		font-size: 20px;
+		font-size: 16px;
+	}
+
+	.hint {
+		max-width: 30px;
+	}
+}
+
+@media (max-height: 350px) {
+	.start, .result, .hint {
+		font-size: 16px;
 	}
 
 	.hint {
