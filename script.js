@@ -7,7 +7,7 @@ const resultSpan = result.querySelector('span');
 const pogresh = 100;
 let heightWindow, widthWindow,
 randomWidth, randomHeight,
-leftCat, topCat, count, audio;
+leftCat, topCat, count, audio, findCatFlag;
 
 audio = new Audio();
 
@@ -57,13 +57,20 @@ function listenerWindowClick(event) {
 	resultSpan.innerHTML = ++count + ' раз';
 	const clientX = event.clientX;
 	const clientY = event.clientY;
+
+	if (findCatFlag == true) {
+		findCatFlag = false;
+		listenerStartClick(event);
+	}
+
 	if (boolCat(0, clientX, clientY)) {
 		// console.log('вы попали');
+		cat.style.transition = 'transform 0.3s linear';
 		cat.style.transform = 'scale(1)';
 		playAudio('audio/win.mp3');
+		findCatFlag = true;
 	} else {
 		playAudio('audio/find1.mp3');
-		cat.style.transform = 'scale(0)';
 		hint.innerHTML = 'Холодрыга';
 		hint.style.backgroundColor = '#0abdff';
 	}
@@ -76,11 +83,13 @@ function listenerWindowClick(event) {
 	} else if (boolCat(400, clientX, clientY)) {
 		hint.innerHTML = 'Холодно';
 		hint.style.backgroundColor = '#83d0ea';
-		backgroundColor = 'transparent'
 	}
 }
 
 function listenerStartClick(event) {
+	hint.style.backgroundColor = 'white';
+	cat.style.transition = '0s transform linear';
+	cat.style.transform = 'scale(0)';
 	event.target.style.backgroundColor = 'orange';
 	event.target.addEventListener('transitionend', (e) => {
 		if (e.target.style.cssText == 'background-color: orange;') {

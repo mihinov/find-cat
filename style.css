@@ -32,7 +32,6 @@ img {
 	top: 0;
 	left: 0;
 	transform: scale(0);
-	transition: transform 0.3s linear;
 }
 
 .start, .result, .hint {
