@@ -54,6 +54,7 @@ img {
 	bottom: 0;
 	top: auto;
 	cursor: default;
+	white-space: nowrap;
 }
 
 .hint {
