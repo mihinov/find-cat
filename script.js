@@ -7,7 +7,7 @@ const result = body.querySelector('.result');
 const resultSpan = result.querySelector('span');
 const overlay = body.querySelector('.overlay');
 const overlaySpan = overlay.querySelector('span');
-const pogresh = 50;
+const pogresh = 25;
 let heightWindow, widthWindow,
 randomWidth, randomHeight,
 leftCat, topCat, count, audio, findCatFlag;
