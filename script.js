@@ -64,10 +64,10 @@ function listenerWindowClick(event) {
 	resultSpan.innerHTML = ++count + ' раз';
 	const clientX = event.clientX;
 	const clientY = event.clientY;
-
-	// if (findCatFlag == true) {
-	// 	findCatFlag = false;
-	// }
+	if (findCatFlag == true) {
+		findCatFlag = false;
+		return false;
+	}
 
 	if (boolCat(0, clientX, clientY)) {
 		// console.log('вы попали');
