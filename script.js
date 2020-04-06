@@ -46,8 +46,8 @@ function calcHeightAndWidthWindow() {
 }
 
 function calcRandomHeightAndWidth() {
-	randomWidth = getRandomInt(pogresh + 20, widthWindow - pogresh - 20);
-	randomHeight = getRandomInt(pogresh + 20, heightWindow - pogresh - 20);
+	randomWidth = getRandomInt(pogresh, widthWindow - pogresh);
+	randomHeight = getRandomInt(pogresh, heightWindow - pogresh);
 }
 
 function getRandomInt(min, max) {
