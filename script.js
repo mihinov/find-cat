@@ -22,7 +22,7 @@ audio = new Audio();
 
 overlaySpan.addEventListener('click', function(e) {
 	overlay.classList.remove('active');
-	listenerStartClick(e);
+	start__menu.classList.add('active');
 	const randWidthPic = Math.floor(getRandomInt(0, widthWindow)/100) + 10;
 	const randHeightPic = Math.floor(getRandomInt(0, heightWindow)/100) + 8;
 	bg.style.backgroundImage = `url(https://picsum.photos/${randWidthPic}00/${randHeightPic}00)`;
