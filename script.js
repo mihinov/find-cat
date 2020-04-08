@@ -109,6 +109,13 @@ function listenerWindowClick(event) {
 	}
 	count++;
 	resultSpan.innerHTML = count;
+	if (count == lvl) {
+		window.removeEventListener('click', listenerWindowClick);
+		playAudio('audio/looz.mp3');
+		hint.style.backgroundColor = 'white';
+		hint.innerHTML = 'Подсказка';
+		return false;
+	}
 	const clientX = event.clientX;
 	const clientY = event.clientY;
 

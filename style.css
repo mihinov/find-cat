@@ -101,6 +101,7 @@ img {
 	align-items: center;
 	transition: opacity .2s linear;
 	z-index: -1;
+	flex-direction: column;
 }
 
 .start__menu {
