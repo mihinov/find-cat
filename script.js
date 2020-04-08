@@ -10,6 +10,7 @@ const overlay = body.querySelector('.overlay');
 const overlaySpan = overlay.querySelector('span');
 const start__menu = body.querySelector('.start__menu');
 const lvls = start__menu.querySelectorAll('.lvl');
+const looz = body.querySelector('.looz');
 const pogresh = 100; // Радиус кота
 let heightWindow, widthWindow,
 randomWidth, randomHeight,
@@ -55,6 +56,11 @@ start.addEventListener('transitionend', function(e) {
 			e.target.style.backgroundColor = 'white';
 		}, 125);
 	}
+});
+
+looz.addEventListener('click', function() {
+	start__menu.classList.add('active');
+	looz.classList.remove('active');
 });
 
 window.addEventListener('resize', function() {
@@ -114,6 +120,7 @@ function listenerWindowClick(event) {
 		playAudio('audio/looz.mp3');
 		hint.style.backgroundColor = 'white';
 		hint.innerHTML = 'Подсказка';
+		looz.classList.add('active');
 		return false;
 	}
 	const clientX = event.clientX;

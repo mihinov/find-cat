@@ -82,29 +82,7 @@ img {
 	white-space: normal;
 }
 
-.overlay {
-	background-color: rgba(0, 0, 0, 0.8);
-	min-height: 100vh;
-	min-width: 100vw;
-	position: absolute;
-	display: -webkit-flex;
-	display: -moz-flex;
-	display: -ms-flex;
-	display: -o-flex;
-	display: flex;
-	opacity: 0;
-	top: 0;
-	left: 0;
-	color: white;
-	font-size: 10vw;
-	justify-content: center;
-	align-items: center;
-	transition: opacity .2s linear;
-	z-index: -1;
-	flex-direction: column;
-}
-
-.start__menu {
+.start__menu, .looz, .overlay {
 	background-color: rgba(0, 0, 0, 0.8);
 	z-index: -1;
 	position: absolute;
@@ -125,6 +103,15 @@ img {
 	align-items: center;
 	flex-direction: column;
 	overflow-x: hidden;
+	text-align: center;
+}
+
+.looz {
+	cursor: pointer;
+}
+
+.looz span {
+	font-size: 5vw;
 }
 
 .lvl {
@@ -172,7 +159,7 @@ img {
 	transform: translateX(0);
 }
 
-.overlay.active, .start__menu.active {
+.overlay.active, .start__menu.active, .looz.active {
 	opacity: 1;
 	z-index: 3;
 }
