@@ -107,8 +107,8 @@ function listenerWindowClick(event) {
 		findCatFlag = false;
 		return false;
 	}
-
-	resultSpan.innerHTML = ++count;
+	count++;
+	resultSpan.innerHTML = count;
 	const clientX = event.clientX;
 	const clientY = event.clientY;
 
