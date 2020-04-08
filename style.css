@@ -92,7 +92,7 @@ img {
 	min-width: 100vw;
 	opacity: 0;
 	color: white;
-	font-size: 7vw;
+	font-size: 5vw;
 	transition: opacity .3s linear;
 	display: -webkit-flex;
 	display: -moz-flex;
@@ -206,6 +206,19 @@ img {
 
 	.hint {
 		max-width: 30px;
+	}
+
+	.lvl {
+		margin-bottom: 30px;
+	}
+	
+	.overlay, .looz {
+		font-size: 10vw;
+	}
+
+	.lvl span {
+		font-size: 8vw;
+		background-color: rgba(0, 0, 0, 0.3);
 	}
 }
 
