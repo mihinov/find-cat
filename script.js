@@ -5,17 +5,19 @@ const start = body.querySelector('.start');
 const hint = body.querySelector('.hint');
 const result = body.querySelector('.result');
 const resultSpan = result.querySelector('span');
+const maxClickCount = result.querySelector('.maxClickCount');
 const overlay = body.querySelector('.overlay');
 const overlaySpan = overlay.querySelector('span');
-const pogresh = 30;
+const start__menu = body.querySelector('.start__menu');
+const lvls = start__menu.querySelectorAll('.lvl');
+const pogresh = 100; // Радиус кота
 let heightWindow, widthWindow,
 randomWidth, randomHeight,
-leftCat, topCat, count, audio, findCatFlag;
+leftCat, topCat, count, audio, findCatFlag, lvl;
 
 cat.style.maxWidth = Math.floor(pogresh * 2) + 'px';
 
 audio = new Audio();
-start.addEventListener('click', listenerStartClick);
 
 overlaySpan.addEventListener('click', function(e) {
 	overlay.classList.remove('active');
@@ -25,6 +27,27 @@ overlaySpan.addEventListener('click', function(e) {
 	bg.style.backgroundImage = `url(https://picsum.photos/${randWidthPic}00/${randHeightPic}00)`;
 });
 
+// start.addEventListener('click', listenerStartClick);
+start.addEventListener('click', function() {
+	window.removeEventListener('click', listenerWindowClick);
+	start__menu.classList.add('active');
+});
+lvls.forEach(function(item, i) {
+	const spanLvl = item.querySelector('span');
+	spanLvl.addEventListener('click', function(e) {
+		const parent = e.target.offsetParent;
+		if (parent.classList.contains('master')) {
+			lvl = 5;
+		} else if (parent.classList.contains('middle')) {
+			lvl = 10;
+		} else if (parent.classList.contains('loser')) {
+			lvl = 20;
+		}
+		maxClickCount.innerHTML = lvl;
+		start__menu.classList.remove('active');
+		listenerStartClick();
+	});	
+});
 start.addEventListener('transitionend', function(e) {
 	if (start.style.cssText == 'background-color: orange;' &&
 		e.target.classList.contains('start')) {
@@ -85,7 +108,7 @@ function listenerWindowClick(event) {
 		return false;
 	}
 
-	resultSpan.innerHTML = ++count + ' раз';
+	resultSpan.innerHTML = ++count;
 	const clientX = event.clientX;
 	const clientY = event.clientY;
 
@@ -124,9 +147,12 @@ function listenerStartClick(event) {
 	calcRandomHeightAndWidth();
 	appearanceCat();
 	count = 0;
-	resultSpan.innerHTML = count + ' раз';
+	resultSpan.innerHTML = count;
 	hint.innerHTML = 'Подсказка';
-	window.addEventListener('click', listenerWindowClick);
+	setTimeout(function() {
+		window.addEventListener('click', listenerWindowClick);
+	}, 200);
+	
 }
 
 function setupSynth() {
