@@ -11,7 +11,7 @@ const overlaySpan = overlay.querySelector('span');
 const start__menu = body.querySelector('.start__menu');
 const lvls = start__menu.querySelectorAll('.lvl');
 const looz = body.querySelector('.looz');
-const pogresh = 100; // Радиус кота
+const pogresh = 60; // Радиус кота
 let heightWindow, widthWindow,
 randomWidth, randomHeight,
 leftCat, topCat, count, audio, findCatFlag, lvl;
