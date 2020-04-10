@@ -8,13 +8,13 @@ const maxClickCount = result.querySelector('.maxClickCount');
 const overlay = body.querySelector('.overlay');
 const overlaySpan = overlay.querySelector('span');
 const start__menu = body.querySelector('.start__menu');
-const lvls = start__menu.querySelectorAll('.lvl'); // тут я получаю элементы .lvl
+const start__game = body.querySelector('.start__game');
 const looz = body.querySelector('.looz');
 const pogresh = 20; // Радиус кота
 let heightWindow, widthWindow,
 randomWidth, randomHeight,
-leftCat, topCat, count, audio, findCatFlag, lvl;
-
+leftCat, topCat, count, audio, findCatFlag;
+const lvl = 5;
 cat.style.maxWidth = Math.floor(pogresh * 2) + 'px';
 
 audio = new Audio();
@@ -30,22 +30,28 @@ start.addEventListener('click', function() {
 	start__menu.classList.add('active');
 });
 
-for (let i = 0; i < lvls.length; i++) {
-	const spanLvl = lvls[i].querySelector('span');
-	spanLvl.addEventListener('click', function(e) {
-		const parent = e.target.offsetParent;
-		if (parent.classList.contains('master')) {
-			lvl = 5;
-		} else if (parent.classList.contains('middle')) {
-			lvl = 10;
-		} else if (parent.classList.contains('loser')) {
-			lvl = 20;
-		}
-		maxClickCount.innerHTML = lvl;
-		start__menu.classList.remove('active');
-		listenerStartClick();
-	});	
-}
+start__game.addEventListener('click', function() {
+	maxClickCount.innerHTML = lvl;
+	start__menu.classList.remove('active');
+	listenerStartClick();
+});
+
+// for (let i = 0; i < lvls.length; i++) {
+// 	const spanLvl = lvls[i].querySelector('span');
+// 	spanLvl.addEventListener('click', function(e) {
+// 		const parent = e.target.offsetParent;
+// 		if (parent.classList.contains('master')) {
+// 			lvl = 5;
+// 		} else if (parent.classList.contains('middle')) {
+// 			lvl = 10;
+// 		} else if (parent.classList.contains('loser')) {
+// 			lvl = 20;
+// 		}
+// 		maxClickCount.innerHTML = lvl;
+// 		start__menu.classList.remove('active');
+// 		listenerStartClick();
+// 	});	
+// }
 
 looz.addEventListener('click', function() {
 	start__menu.classList.add('active');

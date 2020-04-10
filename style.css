@@ -28,6 +28,7 @@ img {
 	background: url(background.jpg) no-repeat center;
 	-webkit-background-size: cover;
 	background-size: cover;
+	animation: bgAnimation 1s infinite linear alternate-reverse;
 }
 
 .cat {
@@ -157,6 +158,13 @@ img {
 	justify-content: center;
 	align-items: center;
 	font-size: 4vw;
+	z-index: 1;
+}
+
+.start__game {
+	cursor: pointer;
+	z-index: 2;
+	position: relative;
 }
 
 .start__menu.active .start__menu-text__block  {
@@ -178,7 +186,7 @@ img {
 	margin-bottom: 10%;
 }
 
-.overlay span::before {
+.overlay span::before, .start__game::before {
 	position: absolute;
 	content: '';
 	bottom: 0;
@@ -191,7 +199,7 @@ img {
 	/*transform-origin: left top;*/
 }
 
-.overlay span:hover::before {
+.overlay span:hover::before, .start__game:hover::before {
 	transform: scaleX(0);
 }
 
@@ -225,5 +233,14 @@ img {
 
 	.hint {
 		max-width: 30px;
+	}
+}
+
+@keyframes bgAnimation {
+	0% {
+		transform: scale(1.5) rotate(0deg);
+	}
+	100% {
+		transform: scale(2) rotate(90deg);
 	}
 }
