@@ -9,7 +9,7 @@ const maxClickCount = result.querySelector('.maxClickCount');
 const overlay = body.querySelector('.overlay');
 const overlaySpan = overlay.querySelector('span');
 const start__menu = body.querySelector('.start__menu');
-const lvls = start__menu.querySelectorAll('.lvl');
+const lvls = start__menu.querySelectorAll('.lvl'); // тут я получаю элементы .lvl
 const looz = body.querySelector('.looz');
 const pogresh = 60; // Радиус кота
 let heightWindow, widthWindow,
@@ -34,8 +34,9 @@ start.addEventListener('click', function() {
 	window.removeEventListener('click', listenerWindowClick);
 	start__menu.classList.add('active');
 });
-lvls.forEach(function(item, i) {
-	const spanLvl = item.querySelector('span');
+
+for (let i = 0; i < lvls.length; i++) {
+	const spanLvl = lvls[i].querySelector('span');
 	spanLvl.addEventListener('click', function(e) {
 		const parent = e.target.offsetParent;
 		if (parent.classList.contains('master')) {
@@ -49,7 +50,8 @@ lvls.forEach(function(item, i) {
 		start__menu.classList.remove('active');
 		listenerStartClick();
 	});	
-});
+}
+
 start.addEventListener('transitionend', function(e) {
 	if (start.style.cssText == 'background-color: orange;' &&
 		e.target.classList.contains('start')) {
