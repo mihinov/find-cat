@@ -11,11 +11,13 @@ const start__menu = body.querySelector('.start__menu');
 const start__game = body.querySelector('.start__game');
 const looz = body.querySelector('.looz');
 const pogresh = 20; // Радиус кота
+const lvl = 20;
 let heightWindow, widthWindow,
 randomWidth, randomHeight,
 leftCat, topCat, count, audio, findCatFlag;
-const lvl = 5;
 cat.style.maxWidth = Math.floor(pogresh * 2) + 'px';
+
+maxClickCount.innerHTML = lvl;
 
 audio = new Audio();
 
@@ -36,25 +38,7 @@ start__game.addEventListener('click', function() {
 	listenerStartClick();
 });
 
-// for (let i = 0; i < lvls.length; i++) {
-// 	const spanLvl = lvls[i].querySelector('span');
-// 	spanLvl.addEventListener('click', function(e) {
-// 		const parent = e.target.offsetParent;
-// 		if (parent.classList.contains('master')) {
-// 			lvl = 5;
-// 		} else if (parent.classList.contains('middle')) {
-// 			lvl = 10;
-// 		} else if (parent.classList.contains('loser')) {
-// 			lvl = 20;
-// 		}
-// 		maxClickCount.innerHTML = lvl;
-// 		start__menu.classList.remove('active');
-// 		listenerStartClick();
-// 	});	
-// }
-
 looz.addEventListener('click', function() {
-	start__menu.classList.add('active');
 	looz.classList.remove('active');
 });
 
