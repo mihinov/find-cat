@@ -22,13 +22,6 @@ maxClickCount.innerHTML = lvl;
 
 audio = new Audio();
 
-function animationHeroes() {
-	for (let i = 0; i < heroes.length; i++) {
-		const str = 'anime' + (i+1) + ' 1s linear infinite alternate';
-		heroes[i].style.animation = str;
-	}
-}
-
 overlaySpan.addEventListener('click', function(e) {
 	overlay.classList.remove('active');
 	start__menu.classList.add('active');
@@ -55,6 +48,13 @@ window.addEventListener('resize', function() {
 	calcRandomHeightAndWidth();
 	appearanceCat();
 });
+
+function animationHeroes() {
+	for (let i = 0; i < heroes.length; i++) {
+		const str = 'anime' + (i+1) + ' 1s linear infinite alternate';
+		heroes[i].style.animation = str;
+	}
+}
 
 function calcHeightAndWidthWindow() {
 	heightWindow = document.body.clientHeight;
