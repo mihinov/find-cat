@@ -12,7 +12,7 @@ const start__game = body.querySelector('.start__game');
 const looz = body.querySelector('.looz');
 const heroes = body.querySelectorAll('.heroes');
 const pogresh = 15; // Радиус кота
-const lvl = 20;
+const lvl = 20; // Сколько кликать
 let heightWindow, widthWindow,
 randomWidth, randomHeight,
 leftCat, topCat, count, audio, findCatFlag;
