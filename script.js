@@ -47,6 +47,7 @@ start__game.addEventListener('click', function() {
 
 looz.addEventListener('click', function() {
 	looz.classList.remove('active');
+	listenerStartClick();
 });
 
 window.addEventListener('resize', function() {
