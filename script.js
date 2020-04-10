@@ -43,11 +43,7 @@ looz.addEventListener('click', function() {
 	listenerStartClick();
 });
 
-window.addEventListener('resize', function() {
-	calcHeightAndWidthWindow();
-	calcRandomHeightAndWidth();
-	appearanceCat();
-});
+window.addEventListener('resize', appearanceCat);
 
 function animationHeroes() {
 	for (let i = 0; i < heroes.length; i++) {
@@ -62,6 +58,7 @@ function calcHeightAndWidthWindow() {
 }
 
 function calcRandomHeightAndWidth() {
+	calcHeightAndWidthWindow();
 	randomWidth = getRandomInt(pogresh, widthWindow - pogresh);
 	randomHeight = getRandomInt(pogresh, heightWindow - pogresh);
 }
@@ -72,6 +69,7 @@ function getRandomInt(min, max) {
 }
 
 function appearanceCat() {
+	calcRandomHeightAndWidth();
 	leftCat = randomWidth - pogresh;
 	topCat = randomHeight - pogresh;
 	cat.style.top = topCat + 'px';
@@ -125,8 +123,6 @@ function listenerStartClick(event) {
 	animationHeroes();
 	cat.style.opacity = 1;
 	boopMe();
-	calcHeightAndWidthWindow();
-	calcRandomHeightAndWidth();
 	appearanceCat();
 	count = 0;
 	resultSpan.innerHTML = count;
