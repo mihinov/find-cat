@@ -37,11 +37,11 @@ img {
 	position: absolute;
 	top: 0;
 	left: 0;
-	transform: scale(0);
+	opacity: 0;
 	z-index: 2;
 }
 
-.start, .result, .hint {
+.start, .result {
 	position: absolute;
 	left: 50%;
 	top: 0;
@@ -66,20 +66,6 @@ img {
 	bottom: 0;
 	top: auto;
 	cursor: default;
-}
-
-.hint {
-	padding: 5px 7px;
-	right: 0;
-	left: auto;
-	top: 50%;
-	transform: translate(0%, -50%);
-	word-wrap: break-word;
-	max-width: 40px;
-	text-align: center;
-	cursor: default;
-	background-color: white;
-	white-space: normal;
 }
 
 .start__menu, .looz, .overlay {

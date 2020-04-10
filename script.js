@@ -2,7 +2,6 @@ const body = document.querySelector('body');
 const bg = body.querySelector('.bg');
 const cat = body.querySelector('.cat');
 const start = body.querySelector('.start');
-const hint = body.querySelector('.hint');
 const result = body.querySelector('.result');
 const resultSpan = result.querySelector('span');
 const maxClickCount = result.querySelector('.maxClickCount');
@@ -11,7 +10,7 @@ const overlaySpan = overlay.querySelector('span');
 const start__menu = body.querySelector('.start__menu');
 const lvls = start__menu.querySelectorAll('.lvl'); // тут я получаю элементы .lvl
 const looz = body.querySelector('.looz');
-const pogresh = 60; // Радиус кота
+const pogresh = 20; // Радиус кота
 let heightWindow, widthWindow,
 randomWidth, randomHeight,
 leftCat, topCat, count, audio, findCatFlag, lvl;
@@ -23,7 +22,6 @@ audio = new Audio();
 overlaySpan.addEventListener('click', function(e) {
 	overlay.classList.remove('active');
 	start__menu.classList.add('active');
-	cat.style.transform = 'scale(0)'
 });
 
 // start.addEventListener('click', listenerStartClick);
@@ -82,11 +80,6 @@ function appearanceCat() {
 	cat.style.left = leftCat + 'px';
 }
 
-function boolCat(num, clientX, clientY) {
-	return (randomWidth < clientX + pogresh + num && randomWidth > clientX - pogresh - num) &&
-		(randomHeight < clientY + pogresh + num && randomHeight > clientY - pogresh - num);
-}
-
 function playAudio(src) {
 	audio.pause();
 	audio.src = src;
@@ -94,10 +87,14 @@ function playAudio(src) {
 	audio.play();
 }
 
+function boolCat(num, clientX, clientY) {
+	return (randomWidth < clientX + pogresh + num && randomWidth > clientX - pogresh - num) &&
+		(randomHeight < clientY + pogresh + num && randomHeight > clientY - pogresh - num);
+}
+
 function listenerWindowClick(event) {
 	if (event.toElement == start ||
-		event.toElement == result ||
-		event.toElement == hint) {
+		event.toElement == result) {
 		return false;
 	}
 	if (findCatFlag == true) {
@@ -109,8 +106,6 @@ function listenerWindowClick(event) {
 	if (count == lvl) {
 		window.removeEventListener('click', listenerWindowClick);
 		playAudio('audio/looz.mp3');
-		hint.style.backgroundColor = 'white';
-		hint.innerHTML = 'Подсказка';
 		looz.classList.add('active');
 		return false;
 	}
@@ -119,40 +114,23 @@ function listenerWindowClick(event) {
 
 	if (boolCat(0, clientX, clientY)) {
 		// console.log('вы попали');
-		cat.style.transition = 'transform 0.3s linear';
-		cat.style.transform = 'scale(1)';
 		playAudio('audio/win.mp3');
 		findCatFlag = true;
 		overlay.classList.add('active');
 		window.removeEventListener('click', listenerWindowClick);
 	} else {
 		playAudio('audio/find1.mp3');
-		hint.innerHTML = 'Холодрыга';
-		hint.style.backgroundColor = '#0abdff';
-	}
-	if (boolCat(50, clientX, clientY)) {
-		hint.innerHTML = 'Горячо';
-		hint.style.backgroundColor = 'orange'
-	} else if (boolCat(200, clientX, clientY)) {
-		hint.innerHTML = 'Тепло';
-		hint.style.backgroundColor = 'yellow'
-	} else if (boolCat(400, clientX, clientY)) {
-		hint.innerHTML = 'Холодно';
-		hint.style.backgroundColor = '#83d0ea';
 	}
 }
 
 function listenerStartClick(event) {
-	hint.style.backgroundColor = 'white';
-	cat.style.transition = '0s transform linear';
-	cat.style.transform = 'scale(0)';
+	cat.style.opacity = 1;
 	boopMe();
 	calcHeightAndWidthWindow();
 	calcRandomHeightAndWidth();
 	appearanceCat();
 	count = 0;
 	resultSpan.innerHTML = count;
-	hint.innerHTML = 'Подсказка';
 	setTimeout(function() {
 		window.addEventListener('click', listenerWindowClick);
 	}, 200);
