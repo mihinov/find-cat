@@ -49,15 +49,6 @@ for (let i = 0; i < lvls.length; i++) {
 	});	
 }
 
-start.addEventListener('transitionend', function(e) {
-	if (start.style.cssText == 'background-color: orange;' &&
-		e.target.classList.contains('start')) {
-		setTimeout(function() {
-			e.target.style.backgroundColor = 'white';
-		}, 125);
-	}
-});
-
 looz.addEventListener('click', function() {
 	start__menu.classList.add('active');
 	looz.classList.remove('active');
@@ -155,7 +146,6 @@ function listenerStartClick(event) {
 	hint.style.backgroundColor = 'white';
 	cat.style.transition = '0s transform linear';
 	cat.style.transform = 'scale(0)';
-	start.style.backgroundColor = 'orange';
 	boopMe();
 	calcHeightAndWidthWindow();
 	calcRandomHeightAndWidth();
