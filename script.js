@@ -10,7 +10,8 @@ const overlaySpan = overlay.querySelector('span');
 const start__menu = body.querySelector('.start__menu');
 const start__game = body.querySelector('.start__game');
 const looz = body.querySelector('.looz');
-const pogresh = 20; // Радиус кота
+const heroes = body.querySelectorAll('.heroes');
+const pogresh = 15; // Радиус кота
 const lvl = 20;
 let heightWindow, widthWindow,
 randomWidth, randomHeight,
@@ -21,12 +22,18 @@ maxClickCount.innerHTML = lvl;
 
 audio = new Audio();
 
+function animationHeroes() {
+	for (let i = 0; i < heroes.length; i++) {
+		const str = 'anime' + (i+1) + ' 1s linear infinite alternate';
+		heroes[i].style.animation = str;
+	}
+}
+
 overlaySpan.addEventListener('click', function(e) {
 	overlay.classList.remove('active');
 	start__menu.classList.add('active');
 });
 
-// start.addEventListener('click', listenerStartClick);
 start.addEventListener('click', function() {
 	window.removeEventListener('click', listenerWindowClick);
 	start__menu.classList.add('active');
@@ -114,6 +121,7 @@ function listenerWindowClick(event) {
 }
 
 function listenerStartClick(event) {
+	animationHeroes();
 	cat.style.opacity = 1;
 	boopMe();
 	calcHeightAndWidthWindow();
