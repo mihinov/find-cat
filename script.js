@@ -55,7 +55,7 @@ for (let i = 0; i < lvls.length; i++) {
 start.addEventListener('transitionend', function(e) {
 	if (start.style.cssText == 'background-color: orange;' &&
 		e.target.classList.contains('start')) {
-		setTimeout(() => {
+		setTimeout(function() {
 			e.target.style.backgroundColor = 'white';
 		}, 125);
 	}
