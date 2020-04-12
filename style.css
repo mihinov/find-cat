@@ -85,7 +85,7 @@ img {
 	opacity: 0;
 	color: white;
 	font-size: 5vw;
-	transition: opacity .3s linear;
+	transition: opacity 0.3s linear;
 	display: -webkit-flex;
 	display: -moz-flex;
 	display: -ms-flex;
@@ -244,7 +244,7 @@ img {
 		transform: translate(0, 0) rotate(90deg);
 	}
 	100% {
-		transform: translate(50vw, 50vh) rotate(120deg)
+		transform: translate(45vw, 45vh) rotate(120deg)
 	}
 }
 
@@ -253,7 +253,7 @@ img {
 		transform: translate(0, 0) rotate(90deg);
 	}
 	100% {
-		transform: translate(50vw, -50vh) rotate(120deg)
+		transform: translate(45vw, -45vh) rotate(120deg)
 	}
 }
 
@@ -262,7 +262,7 @@ img {
 		transform: translate(0, 0) rotate(90deg);
 	}
 	100% {
-		transform: translate(-50vw, -50vh) rotate(120deg)
+		transform: translate(-45vw, -45vh) rotate(120deg)
 	}
 }
 
@@ -271,7 +271,7 @@ img {
 		transform: translate(0, 0) rotate(90deg);
 	}
 	100% {
-		transform: translate(-50vw, 50vh) rotate(120deg)
+		transform: translate(-45vw, 45vh) rotate(120deg)
 	}
 }
 

@@ -11,6 +11,7 @@ const start__menu = body.querySelector('.start__menu');
 const start__game = body.querySelector('.start__game');
 const looz = body.querySelector('.looz');
 const heroes = body.querySelectorAll('.heroes');
+
 const pogresh = 15; // Радиус кота
 const lvl = 20; // Сколько кликать
 let heightWindow, widthWindow,
@@ -33,7 +34,6 @@ start.addEventListener('click', function() {
 });
 
 start__game.addEventListener('click', function() {
-	maxClickCount.innerHTML = lvl;
 	start__menu.classList.remove('active');
 	listenerStartClick();
 });
@@ -58,7 +58,6 @@ function calcHeightAndWidthWindow() {
 }
 
 function calcRandomHeightAndWidth() {
-	calcHeightAndWidthWindow();
 	randomWidth = getRandomInt(pogresh, widthWindow - pogresh);
 	randomHeight = getRandomInt(pogresh, heightWindow - pogresh);
 }
@@ -69,6 +68,7 @@ function getRandomInt(min, max) {
 }
 
 function appearanceCat() {
+	calcHeightAndWidthWindow();
 	calcRandomHeightAndWidth();
 	leftCat = randomWidth - pogresh;
 	topCat = randomHeight - pogresh;
@@ -84,13 +84,17 @@ function playAudio(src) {
 }
 
 function boolCat(num, clientX, clientY) {
-	return (randomWidth < clientX + pogresh + num && randomWidth > clientX - pogresh - num) &&
-		(randomHeight < clientY + pogresh + num && randomHeight > clientY - pogresh - num);
+	return ((randomWidth < clientX + pogresh + num) &&
+		(randomWidth > clientX - pogresh - num)) &&
+		((randomHeight < clientY + pogresh + num) &&
+		(randomHeight > clientY - pogresh - num));
 }
 
 function listenerWindowClick(event) {
 	if (event.toElement == start ||
-		event.toElement == result) {
+		event.toElement == result ||
+		event.toElement == resultSpan ||
+		event.toElement == maxClickCount) {
 		return false;
 	}
 	if (findCatFlag == true) {
@@ -119,17 +123,16 @@ function listenerWindowClick(event) {
 	}
 }
 
-function listenerStartClick(event) {
+function listenerStartClick(event) { // начало игры
 	animationHeroes();
+	appearanceCat();
 	cat.style.opacity = 1;
 	boopMe();
-	appearanceCat();
 	count = 0;
 	resultSpan.innerHTML = count;
 	setTimeout(function() {
 		window.addEventListener('click', listenerWindowClick);
-	}, 200);
-	
+	}, 100);
 }
 
 function setupSynth() {
@@ -151,6 +154,5 @@ function boopMe() {
 	if (!window.synth) {
 		setupSynth();
 	}
-
 	window.synth.triggerAttackRelease(600, '9n');
 }
